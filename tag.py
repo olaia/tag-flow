@@ -45,6 +45,7 @@ def scanCurrentBranchTagsAndGetBiggestVersion():
 def getBiggestVersionTagForCurrentBranch():
 	last_tag = os.popen("git describe --abbrev=0 --tags").read().replace("\n", "")
 	if not isValidTag(last_tag):
+		print "ERROR: ({})".format(last_tag)
 		raise ValueError('Cannot read the last tag version. Please use a valid tag format (v1.2.3) for the last tagged commit in current branch')
 
 	current_version = versionTuple(last_tag)
